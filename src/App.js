@@ -10,20 +10,22 @@ function App() {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${Location}&appid=c949f569bf1e1840f93ad20f9ced79fd`;
   const SearchTool = () => {
     fetch(url)
-    .then((res) => res.json())
-    .then((result) => { console.log(result) })
-  }
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  };
   return (
     <div className="App">
       <div className="SearchAndBtn">
-        <div className="loda">
+        <div className="SBContainer">
           <div className="search">
             <TextField
               id="outlined-basic"
               label="Search City Here"
               variant="outlined"
               color="info"
-              onChange={(e) => setLocation(e.target.value) }
+              onChange={(e) => setLocation(e.target.value)}
             />
           </div>
 
@@ -31,7 +33,6 @@ function App() {
             className="Btn"
             sx={{
               ml: 4,
-
             }}
             variant="contained"
             endIcon={<StormIcon />}
