@@ -14,6 +14,7 @@ function App() {
       .then((res) => res.json())
       .then((result) => {
         setdata(result);
+        document.getElementById("outlined-basic").value = "";
       });
   };
   return (
