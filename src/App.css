@@ -22,7 +22,7 @@
   display: flex;
   padding: 1rem;
   text-align: center;
-  margin-left: 700px;
+  margin-left: 650px;
   align-items: center;
 }
 
@@ -54,6 +54,7 @@
 }
 .Weatherlike{
   transform:rotate(270deg) ;
+  margin-left: 30px;
 }
 
 p{

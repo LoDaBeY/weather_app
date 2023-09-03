@@ -6,13 +6,14 @@ import StormIcon from "@mui/icons-material/Storm";
 
 function App() {
   const [Location, setLocation] = useState("");
+  const [data, setdata] = useState({});
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${Location}&appid=c949f569bf1e1840f93ad20f9ced79fd`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${Location}&units=imperial&appid=c949f569bf1e1840f93ad20f9ced79fd`;
   const SearchTool = () => {
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        setdata(result);
       });
   };
   return (
@@ -46,26 +47,27 @@ function App() {
       <div className="container">
         <div className="Top">
           <div className="description">
-            <p>Damanhour</p>
-            <h1>60°F</h1>
+            <p>{data.name}</p>
+            {data.main? <h1>{data.main.temp.toFixed()}°F</h1> : null }
+            
           </div>
 
           <div className="Weatherlike">
-            <p>Clouds</p>
+          {data.weather ? <p>{data.weather[0].main}</p> : null}
           </div>
         </div>
 
         <div className="bottom">
           <div className="Feelslike">
-            <p className="bold">60%</p>
+            {data.main ? <p className="bold">{data.main.feels_like.toFixed()}%</p> : null}
             <p>Feels Like</p>
           </div>
           <div className="Humidity">
-            <p className="bold">20%</p>
+          {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
             <p>Humidity</p>
           </div>
           <div className="wind">
-            <p className="bold">12 MPH</p>
+          {data.main ? <p className="bold">{data.wind.speed.toFixed()}</p> : null}
             <p>Wind</p>
           </div>
         </div>
